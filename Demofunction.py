@@ -33,7 +33,7 @@ def defaulttimes(a=10, b=20):
 
 print(defaulttimes())
 print(defaulttimes(5))
-print(defaulttimes(,6))
+print(defaulttimes(b=6))
 print(defaulttimes(5,6))
 
 
