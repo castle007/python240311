@@ -45,5 +45,15 @@ def swap(x, y ):
 #호출
 print(swap(5,10))
 
+#가변인자
+
+def union(*ar):
+    result = []
+    for item in ar :
+        for x in item:
+            if x not in result:
+                result.append(x)
+    return result
+
 
 
