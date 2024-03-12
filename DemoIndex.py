@@ -1,3 +1,4 @@
+
 lst = ['white','black','red','red']
 result = []
 for i in range(len(lst)):
