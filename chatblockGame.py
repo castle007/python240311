@@ -27,6 +27,11 @@ ball.penup()
 ball.goto(0, 0)
 ball.dy = 0  # y 방향 속도 초기화
 
+# 최초 출발 각도를 랜덤으로 설정
+# 주석: Set random initial angle for the ball
+angle = random.uniform(-60, 60)  # -60도에서 60도 사이의 각도를 랜덤으로 선택
+ball.setheading(angle)
+
 # 중력 가속도 설정
 gravity = 0.1
 
@@ -77,7 +82,6 @@ while True:
 
     # 중력 적용
     ball.dy -= gravity
-    
 
     # 벽과 공의 충돌 처리
     if ball.ycor() < -290:
@@ -89,15 +93,23 @@ while True:
         ball.sety(-240)
         ball.dy *= -1
 
-    # # 튕겨서 올라갈 때 속도 감소
-    # if ball.dy > 0:  # 공이 올라가는 중일 때
-    #     ball.dy = max(ball.dy - gravity, -0.5)  # 최소 속도를 -0.5로 제한
+    # 튕겨서 올라갈 때 속도 감소 및 증가
+    if ball.dy > 0:  # 공이 올라가는 중일 때
+        ball.dy = max(ball.dy - gravity * 0.5, 1)  # 최소 속도를 -0.5로 제한
+    else:  # 공이 내려가는 중일 때
+        ball.dy = min(ball.dy - gravity * 0.3, 20)  # 최대 속도를 10으로 제한
 
     # 공과 블록의 충돌 처리
     for block in blocks:
         if block.distance(ball) < 20:
             block.goto(1000, 1000)
             ball.dy *= -1
+            ball.dy *= 2.5  # 튕겨서 올라갈 때 속도 증가
+
+   # 맨 위로 올라갔을 때 다시 내려오도록 처리
+    if ball.ycor() > 290:
+        ball.sety(290)
+        ball.dy *= -1
 
     time.sleep(0.01)
 

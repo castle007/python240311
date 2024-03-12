@@ -1,6 +1,10 @@
 #DemoOsPath.py
 
+import glob
 import random
+from os.path import *
+from os import *
+import shutil
 
 print(random.random())
 print(random.random())
@@ -19,7 +23,6 @@ print(lotto)
 
 #파일과 폴더 다루기
 print("-----파일과 폴더 다루기-----")
-from os.path import *
 print(abspath("python.exe"))
 print(basename("c:\\work\\python.exe"))
 if exists("c:\\python310\\python.exe"):
@@ -29,14 +32,12 @@ else :
 
 print("파일크기:{0}".format(getsize("c:\\python310\\python.exe")))
 
-from os import *
 
 print("운영체제이름:{0}".format(name))
 
 print(getcwd())
 
 
-import glob
 print(glob.glob("*.*"))
 
 print("현재폴더:{0}".format(getcwd()))
@@ -45,4 +46,3 @@ chdir("c:\\work")
 lst = glob.glob("*.py")
 for item in lst:
     print(item)
-
