@@ -28,4 +28,6 @@ cur.execute("SELECT * FROM PhoneBook;")
 print(cur.fetchone())
 print(cur.fetchmany(2))
 
+
+#쓰기작업 완료
 con.commit()
