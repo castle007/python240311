@@ -1,13 +1,12 @@
 import tkinter as tk
-import pyautogui
+import winreg
 
 def change_mouse_size(size):
-    pyautogui.FAILSAFE = False  
-    pyautogui.mouseInfo()  
-    pyautogui.FAILSAFE = True  
-    
-    for i in range(1, pyautogui.mouseInfo()['count'] + 1):
-        pyautogui._sizeDataForMouseButton(i, size, size)
+    key = winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Control Panel\Desktop", 0, winreg.KEY_WRITE)
+    winreg.SetValueEx(key, "MouseThreshold1", 0, winreg.REG_SZ, str(size))
+    winreg.SetValueEx(key, "MouseThreshold2", 0, winreg.REG_SZ, str(size))
+    winreg.CloseKey(key)
+    tk.messagebox.showinfo("알림", "마우스 크기가 변경되었습니다.")
 
 def set_mouse_size():
     selected_size = size_var.get()

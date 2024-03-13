@@ -20,7 +20,17 @@ soup = BeautifulSoup(page, "html.parser")
 # print(soup.find_all("p", attrs={"class":"outer-text"}))
 
 #태그의 내무 문자열만 가져오기 : .text 속성
-for tag in soup.find_all("p"):
-    title = tag.text.strip() #strip() : 공백문자 삭제
-    title = title.replace("\n","")
-    print(title)
+# for tag in soup.find_all("p"):
+#     title = tag.text.strip() #strip() : 공백문자 삭제
+#     title = title.replace("\n","")
+#     print(title)
+
+#<p id = 'first'>
+print(soup.find(id="first"))
+
+#id 와 class : # = id, . = class
+
+#구조를 이용 : > 는 테그의 관계 표시 ==> 부모 > 자식
+
+
+#
